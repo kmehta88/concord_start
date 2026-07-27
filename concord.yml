@@ -1,3 +1,8 @@
-flows:
-  default:
-  - log: "Hello Concord User"
+#flows:
+#  default:
+#  - log: "Hello Concord User"
+
+configuration:
+  arguments:
+    nested:
+      name: "Concord"
