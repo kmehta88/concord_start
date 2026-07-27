@@ -1,9 +1,13 @@
 configuration:
+  dependencies:
+    - "mvn://com.walmartlabs.concord.plugins.basic:ansible-tasks:2.35.0"
   arguments:
     nested:
       name: "stranger"
 
 flows:
   default:
-  - log: "Hello, ${nested.name}!"
-  - exec: "ansible-playbook create_table.yml"
+    - log: "Hello, ${nested.name}!"
+    - task: ansible
+      in:
+        playbook: "playbook.yml"
