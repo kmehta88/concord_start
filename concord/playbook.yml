@@ -1,4 +1,3 @@
----
 - name: Create a table in PostgreSQL running in Docker
   hosts: localhost
   connection: local
