@@ -10,4 +10,5 @@ flows:
     - log: "Hello, ${nested.name}!"
     - task: ansible
       in:
+        inventory: "localhost,"
         playbook: "playbooks/playbook.yml"
