@@ -1,6 +1,7 @@
 configuration:
   dependencies:
     - "mvn://com.walmartlabs.concord.plugins.basic:ansible-tasks:2.35.0"
+    - "mvn://com.walmartlabs.concord.plugins.basic:exec-tasks:2.35.0"
   arguments:
     nested:
       name: "stranger"
@@ -8,12 +9,14 @@ configuration:
 flows:
   default:
     - log: "Hello, ${nested.name}!"
+
+    # Step 1: Install missing psycopg2 dependency
+    - task: exec
+      in:
+        command: "pip install --user psycopg2-binary"
+
+    # Step 2: Run Ansible Playbook
     - task: ansible
       in:
-        inventory:
-          hosts:
-            - "localhost"
-          hostvars:
-            localhost:
-              ansible_connection: "local"
+        inventoryFile: "inventory.ini"
         playbook: "playbooks/playbook.yml"
