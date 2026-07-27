@@ -9,10 +9,12 @@ flows:
   default:
     - log: "Hello, ${nested.name}!"
     
-    # 1. Install missing Python dependency
-    - exec: "pip install psycopg2-binary"
+    # Correct Concord syntax for shell execution:
+    - script: bash
+      body: |
+        pip install --user psycopg2-binary
 
-    # 2. Run Ansible playbook
+    # Run Ansible playbook
     - task: ansible
       in:
         inventory:
