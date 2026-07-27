@@ -1,0 +1,8 @@
+configuration:
+  arguments:
+    nested:
+      name: "stranger"
+
+flows:
+  default:
+  - log: "Hello, ${nested.name}!"
