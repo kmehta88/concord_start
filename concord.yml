@@ -1,8 +1,13 @@
-#flows:
-#  default:
-#  - log: "Hello Concord User"
-
 configuration:
+  dependencies:
+    - "mvn://com.walmartlabs.concord.plugins.basic:ansible-tasks:2.35.0"
   arguments:
     nested:
-      name: "Concord"
+      name: "stranger"
+
+flows:
+  default:
+    - log: "Hello, ${nested.name}!"
+    - task: ansible
+      in:
+        playbook: "playbooks/playbook.yml"
