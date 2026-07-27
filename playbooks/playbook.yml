@@ -2,6 +2,11 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: Ensure psycopg2-binary is installed
+      ansible.builtin.pip:
+        name: psycopg2-binary
+        state: present
+
     - name: Create users table
       community.postgresql.postgresql_table:
         login_host: 127.0.0.1
