@@ -2,9 +2,9 @@
   hosts: localhost
   connection: local
   tasks:
-    - name: Ensure file exists at /var/lib/postgresql
+    - name: Ensure file exists at path
       ansible.builtin.file:
-        path: /var/lib/postgresql/test.txt
+        path: /Users/kmehta/test.txt
         state: touch
         mode: '0644'   
 
