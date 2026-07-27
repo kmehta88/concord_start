@@ -1,12 +1,22 @@
-- name: Touch file
+- name: Touch file in Concord workspace
   hosts: localhost
   connection: local
   tasks:
-    - name: Ensure file exists at path
+    - name: Ensure file exists in workspace
       ansible.builtin.file:
-        path: /Users/kmehta/test.txt
+        path: ./test.txt
         state: touch
-        mode: '0644'   
+        mode: '0644'
+        
+#- name: Touch file
+#  hosts: localhost
+#  connection: local
+#  tasks:
+#    - name: Ensure file exists at path
+#      ansible.builtin.file:
+#        path: /Users/kmehta/test.txt
+#        state: touch
+#        mode: '0644'   
 
     #- name: Ensure psycopg2-binary is installed
     #  ansible.builtin.pip:
