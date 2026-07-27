@@ -1,0 +1,19 @@
+---
+- name: Create a table in PostgreSQL running in Docker
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create users table
+      community.postgresql.postgresql_table:
+        login_host: 127.0.0.1
+        login_port: 5433
+        login_user: postgres
+        login_password: postgres
+        db: postgres
+        name: users
+        columns:
+          - id serial PRIMARY KEY
+          - username varchar(50) NOT NULL
+          - email varchar(100)
+          - created_at timestamp DEFAULT CURRENT_TIMESTAMP
+        state: present
