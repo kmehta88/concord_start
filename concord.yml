@@ -8,13 +8,6 @@ configuration:
 flows:
   default:
     - log: "Hello, ${nested.name}!"
-    
-    # Correct Concord syntax for shell execution:
-    - script: bash
-      body: |
-        pip install --user psycopg2-binary
-
-    # Run Ansible playbook
     - task: ansible
       in:
         inventory:
